@@ -15,10 +15,12 @@ const addNewMessage = (sendText,format) =>{
     if(sendText.value.length>0) {
         if(chat.querySelectorAll("li").length>0) {
             const listOfMessages = chat.querySelectorAll("li");
+            const rowHeight = Math.floor(chat.querySelectorAll("p")[0].offsetHeight/3*2)
+            // alert(rowHeight);
             if (listOfMessages[listOfMessages.length - 1].classList.contains(format)) {
                 listOfMessages[listOfMessages.length - 1].innerHTML += `<p>${sendText.value}</p>`;
                 //alert((listOfMessages[listOfMessages.length - 1].offsetHeight));
-                listOfMessages[listOfMessages.length - 1].style.height=listOfMessages[listOfMessages.length - 1].offsetHeight+10+"px";
+                listOfMessages[listOfMessages.length - 1].style.height=listOfMessages[listOfMessages.length - 1].offsetHeight+rowHeight+"px";
                 sendText.value = "";
             } else {
                 chat.insertAdjacentHTML("beforeend",
